@@ -1,0 +1,21 @@
+product_id,order_id,product_name,category,quantity,price_cents
+1,101,Laptop,Electronics,1,15000
+2,102,Headphones,Electronics,2,12500
+3,103,Desk Chair,Furniture,1,30000
+4,104,Notebook,Stationery,5,2400
+5,106,Monitor,Electronics,1,45000
+6,107,Keyboard,Electronics,1,8000
+7,107,Mouse,Electronics,1,12000
+8,108,Desk Lamp,Furniture,2,9000
+9,109,Backpack,Accessories,1,35000
+10,110,Water Bottle,Accessories,3,9333
+11,111,USB Cable,Electronics,4,5500
+12,112,Webcam,Electronics,1,40000
+13,113,Pen Set,Stationery,3,5000
+14,114,Office Chair,Furniture,1,50000
+15,115,Tablet,Electronics,1,33000
+16,116,Phone Case,Accessories,3,9000
+17,117,Charger,Electronics,2,19000
+18,118,Bookshelf,Furniture,1,19000
+19,119,Smart Watch,Electronics,1,42000
+20,120,Desk Organizer,Stationery,5,6200
