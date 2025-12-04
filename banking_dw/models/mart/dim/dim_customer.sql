@@ -1,11 +1,13 @@
 {{ config(materialized='table') }}
 
-with stg_customers as (
-    select * from {{ ref('stg_customers') }}
+with stg_customer as (
+    select * from {{ ref('stg_customer') }}
 )
 select 
     customer_id as customer_key,
     full_name,
     email,
-    last_updated_date
-from stg_customers
+    city,
+    occupation,
+    risk_rating
+from stg_customer

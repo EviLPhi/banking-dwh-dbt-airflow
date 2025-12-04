@@ -1,0 +1,20 @@
+version: 2
+
+seeds:
+  - name: accounts
+    config:
+      column_types:
+        account_number: VARCHAR
+        branch_id: VARCHAR
+        
+  - name: customers
+    config:
+      column_types:
+        phone: VARCHAR
+        postal_code: VARCHAR
+
+  - name: transactions
+    config:
+      column_types:
+        transaction_id: VARCHAR
+      
