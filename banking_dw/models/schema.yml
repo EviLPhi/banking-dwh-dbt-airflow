@@ -1,0 +1,51 @@
+version: 2
+
+models:
+  # --- Dokumentasi & Test untuk Dimensi Customer ---
+  - name: dim_customer
+    description: "Tabel dimensi nasabah yang sudah dibersihkan dan distandarisasi."
+    columns:
+      - name: customer_key
+        description: "Primary Key nasabah (Surrogate Key)."
+        tests:
+          - unique    # Memastikan tidak ada duplikat ID
+          - not_null  # Memastikan ID tidak boleh kosong
+
+      - name: email
+        description: "Email nasabah."
+        tests:
+          - not_null
+
+  # --- Dokumentasi & Test untuk Fakta Transaksi ---
+  - name: fact_transaction
+    description: "Tabel fakta yang mencatat setiap detail transaksi perbankan."
+    columns:
+      - name: transaction_id
+        description: "Primary Key unik untuk setiap transaksi."
+        tests:
+          - unique
+          - not_null
+      
+      - name: customer_key
+        description: "Foreign Key yang menghubungkan transaksi ke nasabah."
+        tests:
+          - not_null
+          - relationships: # Referential Integrity Check
+              to: ref('dim_customer')
+              field: customer_key
+              # Artinya: Setiap customer_key di tabel transaksi HARUS ada di tabel dim_customer.
+              # Jika ada transaksi dari customer '999' tapi customer '999' tidak ada di dim_customer, test ini FAIL.
+
+      - name: account_key
+        description: "Foreign Key ke tabel akun."
+        tests:
+          - not_null
+          # Kita bisa test relasi ke staging account jika dim_account belum dibuat
+          - relationships:
+              to: ref('stg_account')
+              field: account_id
+
+      - name: transaction_amount
+        description: "Nilai uang transaksi."
+        tests:
+          - not_null
